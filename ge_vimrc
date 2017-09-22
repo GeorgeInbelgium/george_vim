@@ -1,0 +1,76 @@
+"*************Platform
+
+let g:system='unix'
+let g:rcpath=$HOME
+
+"Plugin setting
+
+set nocompatible  
+filetype off 
+set rtp+=~/george_vim/bundle/vundle/ 
+"let g:path = '~/george_vim/plugin' 
+
+call vundle#begin('~/george_vim/plugin/')
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'majutsushi/tagbar' 
+Plugin 'mincore/vim-ttcn'
+Plugin 'ctrlpvim/ctrlp.vim'
+
+call vundle#end()
+
+filetype plugin indent on
+
+"Setting for NERDTree
+
+nmap <silent><F2> :NERDTreeToggle<cr>
+
+"Ctags Tagbar
+nmap <silent><F3> :TagbarToggle<cr>
+
+set tags=tags;
+set autochdir
+
+let g:tagbar_width = 30
+
+"Windows Moving
+"nmap <C->
+
+"Normal setting
+colorscheme wombat
+set nu
+filetype plugin indent on
+syntax on
+colorscheme gruvbox
+set background=dark
+
+
+"TTCN Config
+au BufNewFile,BufRead *.ttcn set filetype=ttcn
+
+let g:tagbar_type_ttcn = {
+  \ 'ctagstype' : 'ttcn',
+  \ 'kinds'     : [
+    \ 'f:function',
+    \ 'e:enum',
+    \ 'v:variable',
+    \ 'r:record',
+    \ 'c:const',
+    \ 't:template',
+    \ 'm:module'
+  \]
+\}
+
+"Javascript Config
+let g:tagbar_type_javascript = {
+  \ 'ctagstype' : 'javascript',
+  \ 'kinds'     : [
+    \ 'f:function',
+    \ 's:string',
+    \ 'a:array'
+  \]
+\}
+
+

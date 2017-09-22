@@ -1,0 +1,18 @@
+--langdef=ttcn 
+--langmap=ttcn:.ttcn
+--regex-ttcn=/^[ \t]*function[ \t]+([a-zA-Z0-9_:]+)/\1/f,function/
+--regex-ttcn=/^[ \t]*module[ \t]+([A-Za-z0-9_]+)/\1/m,module/
+--regex-ttcn=/^[ \t]*var[ \t]+(integer|integers|boolean|octetstring|charstring|hexstring|bitstring|float)[ \t]+([A-Za-z0-9_]+)/\2/v,local variable/
+--regex-ttcn=/^[ \t]*var[ \t]+template[ \t]+([A-Za-z0-9_]+[ \t]+)([A-Za-z0-9_]+)/\2/t,template variable/
+
+--regex-ttcn=/^[ \t]*type[ \t]+record[ \t]+(of[ \t]+[A-Za-z0-9_]+[ \t]+)?([A-Za-z0-9_]+)/\2/r, record/
+--regex-ttcn=/^[ \t]*type[ \t]+enumerated[ \t]+([A-Za-z0-9_]+)/\1/e, enum/
+--regex-ttcn=/^[ \t]*const[ \t]+(integer|integers|boolean|octetstring|charstring|hexstring|bitstring|float|([A-Za-z0-9_]+))[ \t]+([A-Za-z0-9_]+)/\3/c,const variable/
+
+--langdef=js
+--langmap=javascript:.js
+--regex-JavaScript=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*\{/\1/o,object/
+--regex-JavaScript=/([A-Za-z0-9._$'"()]+)[ \t]*[:][ \t]*function[ \t]*\([^)]*\)/\1/f,function/
+--regex-JavaScript=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*\[/\1/a,array/
+--regex-JavaScript=/([^= ]+)[ \t]*=[ \t]*'[^']*'/\1/s,string/
+--regex-JavaScript=/([^= ]+)[ \t]*=[ \t]*"[^"]*"/\1/s,string/
