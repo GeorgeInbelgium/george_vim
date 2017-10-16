@@ -1,16 +1,22 @@
 "*************Platform
 
+"echo "(>^.^<)"
+
+let mapleader=" "
 let g:system='unix'
 let g:rcpath=$HOME
-
+let aatdir=$HOME.'/aat/'
+let ttcnmf=$HOME.'/aat/test_executor/'
 "Plugin setting
 
 set nocompatible  
 filetype off 
-set rtp+=~/george_vim/bundle/vundle/ 
+set rtp+=~/Repo/george_vim/bundle/vundle/
+"set rtp+=~/Repo/george_vim/bundle/
+
 "let g:path = '~/george_vim/plugin' 
 
-call vundle#begin('~/george_vim/plugin/')
+call vundle#begin('~/Repo/george_vim/plugin/')
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
@@ -24,10 +30,11 @@ call vundle#end()
 filetype plugin indent on
 
 "Setting for NERDTree
-
 nmap <silent><F2> :NERDTreeToggle<cr>
+autocmd vimenter * if !argc() | NERDTree | endif
+let NERDTreeIgnore=['\.pyc']
 
-"Ctags Tagbar
+"Setting for Ctags, Tagbar
 nmap <silent><F3> :TagbarToggle<cr>
 
 set tags=tags;
@@ -35,17 +42,33 @@ set autochdir
 
 let g:tagbar_width = 30
 
+"Setting for Ctrlp Linux system
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif 
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)'
+
 "Windows Moving
 "nmap <C->
 
 "Normal setting
-colorscheme wombat
+"colorscheme wombat
 set nu
+set ruler
+set ts=4
+set expandtab
+set scrolloff=5
+set shiftwidth=4
+set statusline=%f\ -\ FileType:\ %y
+
 filetype plugin indent on
 syntax on
-colorscheme gruvbox
+colorscheme desert
 set background=dark
+set hlsearch incsearch
 
+"Highlight current line
+"au WinLeave * set nocursorline nocursorcolumn
+"au WinEnter * set cursorline cursorcolumn
+"set cursorline cursorcolumn
 
 "TTCN Config
 au BufNewFile,BufRead *.ttcn set filetype=ttcn
@@ -72,5 +95,24 @@ let g:tagbar_type_javascript = {
     \ 'a:array'
   \]
 \}
+
+:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+:nnoremap <leader>sv :source $MYVIMRC<cr>
+nmap <leader>h  <c-w>h
+nmap <leader>l  <c-w>l
+nmap <leader>k  <c-w>k
+nmap <leader>j  <c-w>j
+nmap <F5> <c-]>
+nmap <F6> <c-t>
+
+"Search
+
+:nnoremap <leader>g :execute "grep! -R ". shellescape("<cword>"). " ".aatdir <cr>:copen<cr>
+
+"Make
+:nnoremap <leader>mf :execute "make "  <cr>:copen<cr>
+
+
+
 
 
