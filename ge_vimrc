@@ -5,7 +5,7 @@
 let mapleader=" "
 let g:system='unix'
 let g:rcpath=$HOME
-let aatdir=$HOME.'/aat/'
+let aatdir=$HOME.'/aat/test_executor/'
 let ttcnmf=$HOME.'/aat/test_executor/'
 "Plugin setting
 
@@ -102,15 +102,31 @@ nmap <leader>h  <c-w>h
 nmap <leader>l  <c-w>l
 nmap <leader>k  <c-w>k
 nmap <leader>j  <c-w>j
-nmap <F5> <c-]>
-nmap <F6> <c-t>
+nmap <F5> <esc>:w<cr> <c-]>
+nmap <F6> <esc>:w<cr> <c-t>
+
+nnoremap <leader>cv :<esc><c-v>
 
 "Search
+:nnoremap <leader>g :execute "grep! -R ". shellescape("<cword>"). " ". aatdir. " --include *.{ttcn}" <cr>:copen<cr>
 
-:nnoremap <leader>g :execute "grep! -R ". shellescape("<cword>"). " ".aatdir <cr>:copen<cr>
+"Make File
+nnoremap <leader>mf :call MakeFileOperator()<cr><cr>
 
-"Make
-:nnoremap <leader>mf :execute "make "  <cr>:copen<cr>
+function! MakeFileOperator()
+    <esc>:w
+    execute "cd /home/echiywa/aat/test_executor/"
+    execute "make"
+    copen
+endfunction
+
+nnoremap <leader>mk :call MakeCheckOperator()<cr>
+
+function! MakeCheckOperator()
+    execute "cd /home/echiywa/aat/test_executor/"
+    execute "make check"
+    copen
+endfunction
 
 
 
