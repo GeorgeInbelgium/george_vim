@@ -110,14 +110,26 @@ nnoremap <leader>cv :<esc><c-v>
 "Search
 :nnoremap <leader>g :execute "grep! -R ". shellescape("<cword>"). " ". aatdir. " --include *.{ttcn}" <cr>:copen<cr>
 
+"Search test
+:nnoremap <leader>x :call SearchFiles(<cword>)<cr>
+function! SearchFiles(word)
+    if &filetype == 'ttcn'
+    execute "grep! -R ". word. <cr>:copen<cr>
+    endif
+
+endfunction
+
 "Make File
-nnoremap <leader>mf :call MakeFileOperator()<cr><cr>
+nnoremap <leader>mf <esc>:call MakeFileOperator()<cr><cr>
 
 function! MakeFileOperator()
-    <esc>:w
-    execute "cd /home/echiywa/aat/test_executor/"
-    execute "make"
+    
+    exec "w"
+    exec "cd /home/echiywa/aat/test_executor/"
+    exec "make"
+ 
     copen
+
 endfunction
 
 nnoremap <leader>mk :call MakeCheckOperator()<cr>
