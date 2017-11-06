@@ -11,12 +11,12 @@ let ttcnmf=$HOME.'/aat/test_executor/'
 
 set nocompatible  
 filetype off 
-set rtp+=~/Repo/george_vim/bundle/vundle/
+set rtp+=~/repo/george_vim/bundle/vundle/
 "set rtp+=~/Repo/george_vim/bundle/
 
 "let g:path = '~/george_vim/plugin' 
 
-call vundle#begin('~/Repo/george_vim/plugin/')
+call vundle#begin('~/repo/george_vim/plugin/')
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
