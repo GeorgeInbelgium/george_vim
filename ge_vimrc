@@ -72,6 +72,9 @@ set hlsearch incsearch
 "au WinEnter * set cursorline cursorcolumn
 "set cursorline cursorcolumn
 
+"Flake8-vim
+let g:flake8_quickfix_height=10
+
 "TTCN Config
 au BufNewFile,BufRead *.ttcn set filetype=ttcn
 
